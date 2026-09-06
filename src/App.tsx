@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { ArrowDown, ArrowRight, Check, Minus, Plus, Menu, Music2, Send, X } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { legalInfo } from '@/config/legal';
 
 const products = [
   { name: 'СВОБОДНЫЙ ХОД', type: '195г/м²', price: 69, tone: 'black', mark: '01', image: '/images/tshirts/tshirt-01.png', category: 'tshirts' },
@@ -15,6 +16,10 @@ const products = [
   { name: 'ИСТОКИ', type: '195г/м²', price: 69, tone: 'bone', mark: '10', image: '/images/tshirts/tshirt-10.png', category: 'tshirts' },
   { name: 'КАРТА', type: '195г/м²', price: 69, tone: 'bone', mark: '11', image: '/images/tshirts/tshirt-11.png', category: 'tshirts' },
   { name: 'СВЯЗЬ', type: '195г/м²', price: 69, tone: 'bone', mark: '12', image: '/images/tshirts/tshirt-12.png', category: 'tshirts' },
+  { name: 'НЕБО', type: '195г/м²', price: 69, tone: 'bone', mark: '13', image: '/images/tshirts/tshirt-13.png', category: 'tshirts' },
+  { name: 'ДОМ', type: '195г/м²', price: 69, tone: 'bone', mark: '14', image: '/images/tshirts/tshirt-14.png', category: 'tshirts' },
+  { name: 'ЗЕМЛЯ', type: '195г/м²', price: 69, tone: 'bone', mark: '15', image: '/images/tshirts/tshirt-15.png', category: 'tshirts' },
+  { name: 'КОД', type: '195г/м²', price: 69, tone: 'bone', mark: '16', image: '/images/tshirts/tshirt-16.png', category: 'tshirts' },
 ] as const;
 
 const hoodies = [
@@ -233,7 +238,7 @@ function App() {
       </section>
 
       <section className="catalog container" id="catalog">
-        <div className="section-heading"><div className="section-label"><span>02</span><span>Каталог / 12</span></div><h2>Вещи<br /><em>с характером.</em></h2><p>Базовая форма. Нестандартная мысль.</p></div>
+        <div className="section-heading"><div className="section-label"><span>02</span><span>Каталог / 16</span></div><h2>Вещи<br /><em>с характером.</em></h2><p>Базовая форма. Нестандартная мысль.</p></div>
         <div className="catalog-tabs">
           <button className={activeTab === 'tshirts' ? 'active' : ''} onClick={() => setActiveTab('tshirts')}>ФУТБОЛКИ</button>
           <button className={activeTab === 'hoodies' ? 'active' : ''} onClick={() => setActiveTab('hoodies')}>ТОЛСТОВКИ</button>
@@ -243,7 +248,7 @@ function App() {
             return <article className="product-card" key={`${product.category}-${product.name}`}>
               <div className="product-image" onClick={() => setExpandedProduct(product)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setExpandedProduct(product); } }} role="button" tabIndex={0} aria-label={`Рассмотреть ${activeTab === 'tshirts' ? 'майку' : 'толстовку'} ${product.name}`}>
                 <img className="product-photo" src={product.image} alt={`${activeTab === 'tshirts' ? 'Майка' : 'Толстовка'} ${product.name}`} />
-                <span className="product-number">{product.mark} / {activeTab === 'tshirts' ? '12' : '04'}</span><span className="product-stamp">МЕЖА<br />MADE IN BY</span><span className="zoom-hint">нажми, чтобы рассмотреть</span>
+                <span className="product-number">{product.mark} / {activeTab === 'tshirts' ? '16' : '04'}</span><span className="product-stamp">МЕЖА<br />MADE IN BY</span><span className="zoom-hint">нажми, чтобы рассмотреть</span>
               </div>
               <div className="product-info"><div><h3>{product.name}</h3><p>{product.type}</p></div><strong>{formatPrice(product.price)}</strong></div>
               <button className="product-choose" onClick={() => setParamsProduct(product)}>Выбрать параметры <ArrowRight size={16} /></button>
@@ -280,7 +285,7 @@ function App() {
       </section>
 
       {sizeGuideOpen && <div className="image-modal" role="dialog" aria-modal="true" aria-label="Просмотр таблицы размеров" onClick={() => setSizeGuideOpen(false)}><button className="image-modal-close" onClick={() => setSizeGuideOpen(false)} aria-label="Закрыть просмотр"><X size={24} /></button><div className="image-modal-content" onClick={(event) => event.stopPropagation()}><img src={sizeGuideImage} alt={`Таблица размеров ${activeTab === 'tshirts' ? 'маек' : 'толстовок'} МЕЖА — увеличенный просмотр`} /><div><strong>Таблица размеров · {activeTab === 'tshirts' ? 'Футболки' : 'Толстовки'}</strong></div></div></div>}
-      {expandedProduct && <div className={`image-modal ${paramsProduct ? 'product-preview-modal' : ''}`} role="dialog" aria-modal="true" aria-label={`Просмотр майки ${expandedProduct.name}`} onClick={() => setExpandedProduct(null)}><button className="image-modal-close" onClick={() => setExpandedProduct(null)} aria-label="Закрыть просмотр"><X size={24} /></button><div className="image-modal-content" onClick={(event) => event.stopPropagation()}><img src={expandedProduct.image} alt={`Майка ${expandedProduct.name} — увеличенный просмотр`} /><div><span>{expandedProduct.mark} / {expandedProduct.category === 'tshirts' ? '12' : '04'}</span><strong>{expandedProduct.name}</strong></div></div></div>}
+      {expandedProduct && <div className={`image-modal ${paramsProduct ? 'product-preview-modal' : ''}`} role="dialog" aria-modal="true" aria-label={`Просмотр майки ${expandedProduct.name}`} onClick={() => setExpandedProduct(null)}><button className="image-modal-close" onClick={() => setExpandedProduct(null)} aria-label="Закрыть просмотр"><X size={24} /></button><div className="image-modal-content" onClick={(event) => event.stopPropagation()}><img src={expandedProduct.image} alt={`Майка ${expandedProduct.name} — увеличенный просмотр`} /><div><span>{expandedProduct.mark} / {expandedProduct.category === 'tshirts' ? '16' : '04'}</span><strong>{expandedProduct.name}</strong></div></div></div>}
       {paramsProduct && (
         <div className="image-modal params-modal" role="dialog" aria-modal="true" aria-label={`Выбор параметров: ${paramsProduct.name}`} onClick={() => setParamsProduct(null)}>
           <div className="params-modal-content" onClick={(event) => event.stopPropagation()}>
@@ -290,7 +295,7 @@ function App() {
             </div>
             <div className="params-modal-side">
               <div className="params-modal-info">
-                <span className="params-modal-mark">{paramsProduct.mark} / {paramsProduct.category === 'tshirts' ? '12' : '04'}</span>
+                <span className="params-modal-mark">{paramsProduct.mark} / {paramsProduct.category === 'tshirts' ? '16' : '04'}</span>
                 <h3>{paramsProduct.name}</h3>
                 <p>{paramsProduct.type}</p>
                 <strong>{formatPrice(paramsProduct.price)}</strong>
@@ -320,7 +325,7 @@ function App() {
         </div>
       )}
       {addedProduct && <div className="toast-notification"><Check size={16} /> <span>{addedProduct} добавлено в корзину</span></div>}
-      <footer className="footer container"><a className="wordmark" href="#top">МЕЖА</a><p>ОДЕЖДА ТВОЕГО КРАЯ.</p><div className="footer-links"><a href="https://t.me/moi_angel" aria-label="Telegram"><Send size={17} /></a><a href="https://www.tiktok.com/@shop.mezha" aria-label="TikTok"><Music2 size={17} /></a></div><span>© 2026 МЕЖА</span><div className="legal-details"><p>ИП Чунаев Денис Андреевич, Республика Беларусь, г. Климовичи, пер. Революционный 21-56, +375 (29) 840-64-58</p><p>УНП 791406610 от 26.08.2026 г. выдано Климовичским РИК, тел. Климовичский РИК: +375 (22) 442-56-02</p></div></footer>
+      <footer className="footer container"><a className="wordmark" href="#top">МЕЖА</a><p>ОДЕЖДА ТВОЕГО КРАЯ.</p><div className="footer-links"><a href="https://t.me/moi_angel" aria-label="Telegram"><Send size={17} /></a><a href="https://www.tiktok.com/@shop.mezha" aria-label="TikTok"><Music2 size={17} /></a></div><span>© 2026 МЕЖА</span><div className="legal-details"><p>{legalInfo.entrepreneur}, {legalInfo.country}, {legalInfo.city}, {legalInfo.address}, {legalInfo.phone}</p><p>УНП {legalInfo.unp} от {legalInfo.unpDate} выдано {legalInfo.unpIssuedBy}, тел. Климовичский РИК: {legalInfo.rikPhone}</p><p>Интернет-магазин зарегистрирован в Торговом реестре Республики Беларусь: № {legalInfo.tradeRegisterNumber} от {legalInfo.tradeRegisterDate}. Адрес для почтовых отправлений: {legalInfo.postalAddress}. Режим работы: {legalInfo.workingHours}.</p></div></footer>
     </main>
   );
 }

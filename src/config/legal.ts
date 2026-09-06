@@ -1,0 +1,15 @@
+export const legalInfo = {
+  entrepreneur: 'ИП Чунаев Денис Андреевич',
+  country: 'Республика Беларусь',
+  city: 'г. Климовичи',
+  address: 'пер. Революционный 21-56',
+  phone: '+375 (29) 840-64-58',
+  unp: '791406610',
+  unpDate: '26.08.2026 г.',
+  unpIssuedBy: 'Климовичским РИК',
+  rikPhone: '+375 (2244) 7-78-01',
+  tradeRegisterNumber: '[НОМЕР_ИЗ_РЕЕСТРА]',
+  tradeRegisterDate: '[ДАТА_ИЗ_РЕЕСТРА]',
+  postalAddress: 'г. Климовичи, пер. Революционный 21-56',
+  workingHours: 'Пн-Пт 09:00-21:00',
+};
