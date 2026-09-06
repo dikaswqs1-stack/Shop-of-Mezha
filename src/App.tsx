@@ -3,25 +3,25 @@ import { ArrowDown, ArrowRight, Check, Minus, Plus, Menu, Music2, Send, X } from
 import { supabase } from '@/lib/supabase';
 
 const products = [
-  { name: 'СВОБОДНЫЙ ХОД', type: '195г/м²', price: 69, tone: 'black', mark: '01', image: '/images/1._СВОБОДНЫИ_ХОД.png', category: 'tshirts' },
-  { name: 'ТВОЕ НАПРАВЛЕНИЕ', type: '195г/м²', price: 69, tone: 'bone', mark: '02', image: '/images/2._ТВОЕ_НАПРАВЛЕНИЕ.png', category: 'tshirts' },
-  { name: 'МЕСТО СИЛЫ', type: '195г/м²', price: 69, tone: 'slate', mark: '03', image: '/images/3._МЕСТО_СИЛЫ.png', category: 'tshirts' },
-  { name: 'ЦИФРОВОЙ СЛЕД', type: '195г/м²', price: 69, tone: 'sand', mark: '04', image: '/images/4._ЦИФРОВОИ_СЛЕД copy.png', category: 'tshirts' },
-  { name: 'СИЛУЭТ', type: '195г/м²', price: 69, tone: 'red', mark: '05', image: '/images/5._СИЛУЭТ.png', category: 'tshirts' },
-  { name: 'ШИФР', type: '195г/м²', price: 69, tone: 'green', mark: '06', image: '/images/6._ШИФР.png', category: 'tshirts' },
-  { name: 'КОНТЕКСТ', type: '195г/м²', price: 69, tone: 'rust', mark: '07', image: '/images/7._КОНТЕКСТ copy.png', category: 'tshirts' },
-  { name: 'КООРДИНАТА', type: '195г/м²', price: 69, tone: 'teal', mark: '08', image: '/images/8._КООРДИНАТА copy.png', category: 'tshirts' },
-  { name: 'ПОЛЕТ', type: '195г/м²', price: 69, tone: 'bone', mark: '09', image: '/images/9._ПОЛЕТ.png', category: 'tshirts' },
-  { name: 'ИСТОКИ', type: '195г/м²', price: 69, tone: 'bone', mark: '10', image: '/images/10.ИСТОКИ.png', category: 'tshirts' },
-  { name: 'КАРТА', type: '195г/м²', price: 69, tone: 'bone', mark: '11', image: '/images/11.КАРТА.png', category: 'tshirts' },
-  { name: 'СВЯЗЬ', type: '195г/м²', price: 69, tone: 'bone', mark: '12', image: '/images/12.СВЯЗЬ.png', category: 'tshirts' },
+  { name: 'СВОБОДНЫЙ ХОД', type: '195г/м²', price: 69, tone: 'black', mark: '01', image: '/images/tshirts/tshirt-01.png', category: 'tshirts' },
+  { name: 'ТВОЕ НАПРАВЛЕНИЕ', type: '195г/м²', price: 69, tone: 'bone', mark: '02', image: '/images/tshirts/tshirt-02.png', category: 'tshirts' },
+  { name: 'МЕСТО СИЛЫ', type: '195г/м²', price: 69, tone: 'slate', mark: '03', image: '/images/tshirts/tshirt-03.png', category: 'tshirts' },
+  { name: 'ЦИФРОВОЙ СЛЕД', type: '195г/м²', price: 69, tone: 'sand', mark: '04', image: '/images/tshirts/tshirt-04.png', category: 'tshirts' },
+  { name: 'СИЛУЭТ', type: '195г/м²', price: 69, tone: 'red', mark: '05', image: '/images/tshirts/tshirt-05.png', category: 'tshirts' },
+  { name: 'ШИФР', type: '195г/м²', price: 69, tone: 'green', mark: '06', image: '/images/tshirts/tshirt-06.png', category: 'tshirts' },
+  { name: 'КОНТЕКСТ', type: '195г/м²', price: 69, tone: 'rust', mark: '07', image: '/images/tshirts/tshirt-07.png', category: 'tshirts' },
+  { name: 'КООРДИНАТА', type: '195г/м²', price: 69, tone: 'teal', mark: '08', image: '/images/tshirts/tshirt-08.png', category: 'tshirts' },
+  { name: 'ПОЛЕТ', type: '195г/м²', price: 69, tone: 'bone', mark: '09', image: '/images/tshirts/tshirt-09.png', category: 'tshirts' },
+  { name: 'ИСТОКИ', type: '195г/м²', price: 69, tone: 'bone', mark: '10', image: '/images/tshirts/tshirt-10.png', category: 'tshirts' },
+  { name: 'КАРТА', type: '195г/м²', price: 69, tone: 'bone', mark: '11', image: '/images/tshirts/tshirt-11.png', category: 'tshirts' },
+  { name: 'СВЯЗЬ', type: '195г/м²', price: 69, tone: 'bone', mark: '12', image: '/images/tshirts/tshirt-12.png', category: 'tshirts' },
 ] as const;
 
 const hoodies = [
-  { name: 'СВОБОДНЫЙ ХОД', type: 'хлопок', price: 119, tone: 'bone', mark: '01', image: '/images/1._СВОБОДНЫИ_ХОД copy.png', category: 'hoodies' },
-  { name: 'ТВОЕ НАПРАВЛЕНИЕ', type: 'хлопок', price: 119, tone: 'bone', mark: '02', image: '/images/2._ТВОЕ_НАПРАВЛЕНИЕ copy.png', category: 'hoodies' },
-  { name: 'МЕСТО СИЛЫ', type: 'хлопок', price: 119, tone: 'bone', mark: '03', image: '/images/3._МЕСТО_СИЛЫ copy.png', category: 'hoodies' },
-  { name: 'ЦИФРОВОЙ СЛЕД', type: 'хлопок', price: 119, tone: 'bone', mark: '04', image: '/images/4._ЦИФРОВОИ_СЛЕД copy 2.png', category: 'hoodies' },
+  { name: 'СВОБОДНЫЙ ХОД', type: 'хлопок', price: 119, tone: 'bone', mark: '01', image: '/images/hoodie/hoodie-01.png', category: 'hoodies' },
+  { name: 'ТВОЕ НАПРАВЛЕНИЕ', type: 'хлопок', price: 119, tone: 'bone', mark: '02', image: '/images/hoodie/hoodie-02.png', category: 'hoodies' },
+  { name: 'МЕСТО СИЛЫ', type: 'хлопок', price: 119, tone: 'bone', mark: '03', image: '/images/hoodie/hoodie-03.png', category: 'hoodies' },
+  { name: 'ЦИФРОВОЙ СЛЕД', type: 'хлопок', price: 119, tone: 'bone', mark: '04', image: '/images/hoodie/hoodie-04.png', category: 'hoodies' },
 ] as const;
 
 const sizes = ['S', 'M', 'L'] as const;
@@ -64,7 +64,7 @@ function App() {
   const [addedProduct, setAddedProduct] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'tshirts' | 'hoodies'>('tshirts');
   const activeProducts = activeTab === 'tshirts' ? products : hoodies;
-  const sizeGuideImage = activeTab === 'tshirts' ? '/images/image.png' : '/images/ddcf7dfb-1010-4871-a6b7-e98851be40c6.png';
+  const sizeGuideImage = activeTab === 'tshirts' ? '/images/tshirts/tshirt-size-chart.png' : '/images/hoodie/hoodies-size-table.png';
   const sizeHints = activeTab === 'tshirts' ? ['44–46', '48', '50'] : ['46', '48', '50'];
 
   const updateField = (field: keyof FormState, value: string) => {
@@ -219,7 +219,7 @@ function App() {
         </div>
         <div className="hero-art">
           <div className="hero-art-top"><span>МЕЖА / 01</span><span>Беларусь</span></div>
-          <img src="/images/98730a84-2a45-4bb2-a96f-a6d410d953f3.png" alt="Логотип бренда МЕЖА" />
+          <img src="/images/logo.png" alt="Логотип бренда МЕЖА" />
           <div className="hero-art-bottom"><span>KEEP YOUR LINE</span><span>53°31′45″ N / 28°02′42″ E</span></div>
           <div className="art-cross cross-one" /><div className="art-cross cross-two" />
         </div>
